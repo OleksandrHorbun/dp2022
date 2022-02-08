@@ -8,7 +8,7 @@ import { Iweather } from '../interfaces/iweather';
 })
 export class HttpService {
 
-  url:string = "http://localhost:8080/lab1/Servlet_first";  
+  url:string = "/lab1/Servlet_first";  
 
   constructor(private http:HttpClient) { }
 

@@ -1,8 +1,8 @@
 nfs
 
 
-/.metadata/
-/.vs/
+.metadata/
+.vs/
 bin/
 tmp/
 *.tmp
