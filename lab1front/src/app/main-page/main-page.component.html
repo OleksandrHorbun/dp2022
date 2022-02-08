@@ -1,0 +1,17 @@
+<h1>Hello form Oleksandr!!!</h1>
+
+<a href = "./Servlet_first">To Servlet</a>
+
+<h1></h1>
+
+<button (click) = "getWeather()">Show weather's forecast</button>
+
+<ul>
+    <li *ngFor = "let oneweather of weatherList">
+        City: {{oneweather.city}}, Date: ({{oneweather.date}}), Temperature: ({{oneweather.temp}}),
+        Minimal temperature: ({{oneweather.temp_min}}), Maximal temperature: ({{oneweather.temp_max}}),
+        Feels-like: ({{oneweather.feels_like}}),
+        Brief description: {{oneweather.description}} ;
+
+    </li>
+</ul>
