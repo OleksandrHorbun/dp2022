@@ -1,7 +1,8 @@
 nfs
 
 
-.metadata
+/.metadata/
+/.vs/
 bin/
 tmp/
 *.tmp
@@ -12,6 +13,10 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+/dist
+/tmp
+/out-tsc
+/bazel-out
 
 # External tool builders
 .externalToolBuilders/
