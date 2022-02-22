@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Iweather } from './interfaces/iweather';
-import { HttpService } from './services/httpservice.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +6,5 @@ import { HttpService } from './services/httpservice.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-
-  title = "lab1front";
-  router: any;
-  
+  title = 'lab2front';
 }
