@@ -5,8 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import mock.Lab2CrudMock;
+import weather_package.Weather;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import crud_package.Lab2CrudInterface;
 
@@ -44,6 +48,17 @@ public class Servlet_first extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String city = request.getParameter("city");
+		String date = request.getParameter("date");
+		double temp = Double.parseDouble(request.getParameter("temp"));
+		double temp_min = Double.parseDouble(request.getParameter("temp_min"));
+		double temp_max = Double.parseDouble(request.getParameter("temp_max"));
+		double feels_like = Double.parseDouble(request.getParameter("feels_like"));
+		String description = request.getParameter("description");
+		
+		lab2CrudInterface.updateWeather(new Weather(city, date, temp, temp_min, temp_max, feels_like, description));
+		
+		
 	}
 
 }
