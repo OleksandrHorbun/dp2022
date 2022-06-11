@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,4 +10,50 @@
 <body>
   <app-root></app-root>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oleksandr's Informer</title>
+</head>
+<body>
+    <header class="headerfooter-height">
+        <h1>Hello, welcome to my informer website!</h1>
+    </header>
+
+    <div class="freespace" id="main"></div>
+
+    <section class="container">
+        <div class="full-height">
+            <h2>Weather in selected city:</h2>
+            <p>Weather = <span id="weather"></span></p>
+            <p>Temp =  <span id="temp"></span></p>
+            <p>Temp-min = <span id="temp-min"></span></p>
+            <p>Temp-max = <span id="temp-max"></span></p>
+            <p>Feels-like = <span id="feels"></span></p>
+            <div><textarea class = "textplace" cols = "40" rows="1" placeholder="City (Default = Kyiv UA)"></textarea></div>
+            <div><button class="btn_change_city">Select City</button></div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="full-height">
+            <h2>Other cities:</h2>
+            <p><span id="infotext0"></span>. <br> <span><b>Temperature:</b></span> <span id="text0"></span>.</p>
+            <p><span id="infotext1"></span>. <br> <span><b>Temperature:</b></span> <span id="text1"></span>.</p>
+            <p><span id="infotext2"></span>. <br> <span><b>Temperature:</b></span> <span id="text2"></span>.</p>
+        </div>
+    </section>
+    
+    <div class="freespace" id="main"></div>
+
+    <footer class="headerfooter-height" id="footer-id">
+        <h2>&copy; Copyright O.Horbun 2022 All rights reserved</h2>
+    </footer>
+
+</body> 
 </html>
