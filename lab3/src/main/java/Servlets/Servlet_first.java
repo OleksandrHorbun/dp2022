@@ -58,7 +58,7 @@ public class Servlet_first extends HttpServlet {
 		System.out.println(id);
 		response.setContentType("application/json");
 		int index = Helpers.getIndexByWeatherId(id, lu);
-		lu.set(index,weather);
+		lu.set(index, weather);
 		doGet(request, response);
 	}
 

@@ -29,18 +29,18 @@ public class Helpers {
 		
 	public static Weather weatherParse(HttpServletRequest request) {
 		Weather weather = new Weather();
-			JsonElement jsonElement = bodyParse(request);
-			weather.setId(jsonElement.getAsJsonObject().get("id").getAsInt());
-			weather.setCity(jsonElement.getAsJsonObject().get("city").getAsString());
-			weather.setDate(jsonElement.getAsJsonObject().get("date").getAsString());
-			weather.setTemp(jsonElement.getAsJsonObject().get("temp").getAsDouble());
-			weather.setTemp_min(jsonElement.getAsJsonObject().get("temp_min").getAsDouble());
-			weather.setTemp_max(jsonElement.getAsJsonObject().get("temp_max").getAsDouble());
-			weather.setFeels_like(jsonElement.getAsJsonObject().get("feels_like").getAsDouble());
-			weather.setDescription(jsonElement.getAsJsonObject().get("description").getAsString());
-			
-			return weather;
-		}
+		JsonElement jsonElement = bodyParse(request);
+		weather.setId(jsonElement.getAsJsonObject().get("id").getAsInt());
+		weather.setCity(jsonElement.getAsJsonObject().get("city").getAsString());
+		weather.setDate(jsonElement.getAsJsonObject().get("date").getAsString());
+		weather.setTemp(jsonElement.getAsJsonObject().get("temp").getAsDouble());
+		weather.setTemp_min(jsonElement.getAsJsonObject().get("temp_min").getAsDouble());
+		weather.setTemp_max(jsonElement.getAsJsonObject().get("temp_max").getAsDouble());
+		weather.setFeels_like(jsonElement.getAsJsonObject().get("feels_like").getAsDouble());
+		weather.setDescription(jsonElement.getAsJsonObject().get("description").getAsString());
+		
+		return weather;
+	}
 		
 		public static int getNextId(List<Weather> list) {
 			int maxId = 0;
@@ -58,7 +58,7 @@ public class Helpers {
 			
 			Iterator<Weather> iterator = list.iterator();
 			while(iterator.hasNext()) {
-				Weather temp =iterator.next();
+				Weather temp = iterator.next();
 				if(temp.getId()==listId) { 
 					listId=list.indexOf(temp);
 					break;
