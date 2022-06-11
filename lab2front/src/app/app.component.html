@@ -29,11 +29,48 @@
     </section>
 
     <section class="container">
-        <div class="full-height">
-            <h2>Other cities:</h2>
-            <p><span id="infotext0"></span>. <br> <span><b>Temperature:</b></span> <span id="text0"></span>.</p>
-            <p><span id="infotext1"></span>. <br> <span><b>Temperature:</b></span> <span id="text1"></span>.</p>
-            <p><span id="infotext2"></span>. <br> <span><b>Temperature:</b></span> <span id="text2"></span>.</p>
+        <div class="full-height" >
+            <h2>Other cities (brief):</h2>
+            <div class = "cities" *ngFor="let item of itemsList">
+            <p id="infotemp"><br><b>{{item.city}} Temperature: {{item.temp}}</b></p>
+            
+            <b><div class="interact"><img (click)="onSelect(item)" src="/assets/edit.png" alt=""><span (click)="deleteItem(item)" id="del"> X </span></div></b>
+            </div>
+
+            <div class="interactblock">
+              <h1>Add Forecast</h1>
+              <form #form1="ngForm" (ngSubmit)="addItem(form1.value)">
+                  <input type="hidden" id="name" class="feedback-input" name="id"  ngModel="-1">
+
+                  <input type="text" id="city" class="input" placeholder="City..." name="city"  ngModel="">
+                  <input type="text" class="input" placeholder="Date...(30.11.2022)" name="date" ngModel="">
+                  <input type="number" class="input" placeholder="Temperature..." name="temp" ngModel="">
+                  <input type="number" class="input" placeholder="Minimum..." name="temp_min" ngModel="">
+                  <input type="number" class="input" placeholder="Maximum..." name="temp_max" ngModel="">
+                  <input type="number" class="input" placeholder="Feels-like..." name="feel_like" ngModel="">
+                  <textarea type="text" class="input" placeholder="Description..." name="description" ngModel=""></textarea>
+                  
+                  <input type="submit" value="ADD">
+              </form>
+              </div>
+      
+              <div class="interactblock" *ngIf="selectedItem">
+              <h1>Edit Forecast</h1>
+              <form  #form2="ngForm" (ngSubmit)="updateItem(form2.value)">
+                  <input type="hidden" id="name" class="input" name="id"  ngModel="{{selectedItem.id}}">
+
+                  <input type="text" id="city" class="input" placeholder="City..." name="city"  ngModel="{{selectedItem.city}}">
+                  <input type="text" class="input" placeholder="Date...(30.11.2022)" name="date" ngModel="{{selectedItem.date}}">
+                  <input type="number" class="input" placeholder="Temperature..." name="temp" ngModel="{{selectedItem.temp}}">
+                  <input type="number" class="input" placeholder="Minimum..." name="temp_min" ngModel="{{selectedItem.temp_min}}">
+                  <input type="number" class="input" placeholder="Maximum..." name="temp_max" ngModel="{{selectedItem.temp_max}}">
+                  <input type="number" class="input" placeholder="Feels-like..." name="feel_like" ngModel="{{selectedItem.feels_like}}">
+                  <textarea class="input" placeholder="Description" name="description..." ngModel="{{selectedItem.description}}"></textarea>
+
+                  <input type="submit" value="EDIT">
+              </form> 
+              </div>
+
         </div>
     </section>
     
