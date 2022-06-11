@@ -8,7 +8,7 @@ public class Lab2CrudMock implements Lab2CrudInterface {
 	@Override
 	public Weather readWeather() {
 		// TODO Auto-generated method stub
-		return new Weather ("Kyiv", "08.04.2022", 8, -9, 9, 5, "Clear");
+		return new Weather (0, "Kyiv", "08.04.2022", 8, -9, 9, 5, "Clear");
 	}
 
 	@Override

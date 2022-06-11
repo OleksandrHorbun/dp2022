@@ -48,6 +48,7 @@ public class Servlet_first extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));
 		String city = request.getParameter("city");
 		String date = request.getParameter("date");
 		double temp = Double.parseDouble(request.getParameter("temp"));
@@ -56,7 +57,7 @@ public class Servlet_first extends HttpServlet {
 		double feels_like = Double.parseDouble(request.getParameter("feels_like"));
 		String description = request.getParameter("description");
 		
-		lab2CrudInterface.updateWeather(new Weather(city, date, temp, temp_min, temp_max, feels_like, description));
+		lab2CrudInterface.updateWeather(new Weather(id, city, date, temp, temp_min, temp_max, feels_like, description));
 		
 		
 	}

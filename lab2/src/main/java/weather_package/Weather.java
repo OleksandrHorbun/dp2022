@@ -9,7 +9,7 @@ public class Weather implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+	private int id;
 	private String city;
 	private String date;
 	private double temp;
@@ -18,7 +18,7 @@ public class Weather implements Serializable{
 	private double feels_like;
 	private String description;
 	
-	public Weather(String city, String date, double temp, double temp_min, double temp_max, double feels_like, String description) {
+	public Weather(int id, String city, String date, double temp, double temp_min, double temp_max, double feels_like, String description) {
 		super();
 		this.city = city;
 		this.date = date;
@@ -29,6 +29,10 @@ public class Weather implements Serializable{
 		this.description = description;
 	}
 
+	public int getId() {
+		return id;
+	}
+	
 	public String getCity() {
 		return city;
 	}
@@ -58,6 +62,10 @@ public class Weather implements Serializable{
 	}
 
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -88,7 +96,7 @@ public class Weather implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "{\"city\": \"" + city + "\", \"date\": \"" + date + "\", \"temp\": " + temp + ", \"temp_min\": " + temp_min + ", \"temp_max\": " + temp_max + ", \"feels_like\": " + feels_like + ", \"description\": \"" + description + "\"}";
+		return "{\"id\": \"" + id + "\", \"city\": \"" + city + "\", \"date\": \"" + date + "\", \"temp\": " + temp + ", \"temp_min\": " + temp_min + ", \"temp_max\": " + temp_max + ", \"feels_like\": " + feels_like + ", \"description\": \"" + description + "\"}";
 	}
 	
 }

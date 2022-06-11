@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Weather weather = new Weather("Kyiv", "08.04.2022", 8, -9, 9, 5, "Clear");
+		Weather weather = new Weather(0, "Kyiv", "08.04.2022", 8, -9, 9, 5, "Clear");
 
 		IOInterface fio = new FileIO();
 		
