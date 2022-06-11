@@ -14,31 +14,25 @@
     <div class="freespace" id="main"></div>
 
     <section class="container">
-        <div class="full-height">
-            <h2>Weather in selected city:</h2>
-            <p>City = <span id="Pcity"></span></p>
-            <p>Date of forecast = <span id="Pdate"></span></p>
-            <p>Temp = <span id="Ptemp"></span></p>
-            <p>Temp-min = <span id="Ptemp-min"></span></p>
-            <p>Temp-max = <span id="Ptemp-max"></span></p>
-            <p>Feels-like = <span id="Pfeels"></span></p>
-            <p>Weather how it it = <span id="Pdescription"></span></p>
-            <div><textarea class = "textplace" cols = "40" rows="1" placeholder="City (Default = Kyiv UA)"></textarea></div>
-            <div><button class="btn_change_city">Select City</button></div>
+        <div class="full-height" *ngFor="let item of itemsList">
+
+            <h2>Weather in cities:</h2>
+            <h2 class = "Pcity">City = {{item.city}}</h2>
+            <p class = "Pdate">Date of forecast = {{item.date}}</p>
+            <p class = "Ptemp">Temp = {{item.temp}}</p>
+            <p class = Ptemp_min>Temp-min = {{item.temp_min}}</p>
+            <p class = "Ptemp_max">Temp-max = {{item.temp_max}}</p>
+            <p class = "Pfeels">Feels-like = {{item.feels_like}}</p>
+            <p class = "Pdescription">Weather how it is = {{item.description}}</p>
+            
         </div>
     </section>
 
     <section class="container">
         <div class="full-height" >
-            <h2>Other cities (brief):</h2>
-            <div class = "cities" *ngFor="let item of itemsList">
-            <p id="infotemp"><br><b>{{item.city}} Temperature: {{item.temp}}</b></p>
-            
-            <b><div class="interact"><img (click)="onSelect(item)" src="/assets/edit.png" alt=""><span (click)="deleteItem(item)" id="del"> X </span></div></b>
-            </div>
 
             <div class="interactblock">
-              <h1>Add Forecast</h1>
+              <h2>Add Forecast</h2>
               <form #form1="ngForm" (ngSubmit)="addItem(form1.value)">
                   <input type="hidden" id="name" class="feedback-input" name="id"  ngModel="-1">
 
@@ -47,7 +41,7 @@
                   <input type="number" class="input" placeholder="Temperature..." name="temp" ngModel="">
                   <input type="number" class="input" placeholder="Minimum..." name="temp_min" ngModel="">
                   <input type="number" class="input" placeholder="Maximum..." name="temp_max" ngModel="">
-                  <input type="number" class="input" placeholder="Feels-like..." name="feel_like" ngModel="">
+                  <input type="number" class="input" placeholder="Feels-like..." name="feels_like" ngModel="">
                   <textarea type="text" class="input" placeholder="Description..." name="description" ngModel=""></textarea>
                   
                   <input type="submit" value="ADD">
@@ -55,16 +49,16 @@
               </div>
       
               <div class="interactblock" *ngIf="selectedItem">
-              <h1>Edit Forecast</h1>
+              <h2>Edit Forecast</h2>
               <form  #form2="ngForm" (ngSubmit)="updateItem(form2.value)">
-                  <input type="hidden" id="name" class="input" name="id"  ngModel="{{selectedItem.id}}">
+                  <input type="hidden" id="name" class="input" name="id" ngModel="{{selectedItem.id}}">
 
                   <input type="text" id="city" class="input" placeholder="City..." name="city"  ngModel="{{selectedItem.city}}">
                   <input type="text" class="input" placeholder="Date...(30.11.2022)" name="date" ngModel="{{selectedItem.date}}">
                   <input type="number" class="input" placeholder="Temperature..." name="temp" ngModel="{{selectedItem.temp}}">
                   <input type="number" class="input" placeholder="Minimum..." name="temp_min" ngModel="{{selectedItem.temp_min}}">
                   <input type="number" class="input" placeholder="Maximum..." name="temp_max" ngModel="{{selectedItem.temp_max}}">
-                  <input type="number" class="input" placeholder="Feels-like..." name="feel_like" ngModel="{{selectedItem.feels_like}}">
+                  <input type="number" class="input" placeholder="Feels-like..." name="feels_like" ngModel="{{selectedItem.feels_like}}">
                   <textarea class="input" placeholder="Description" name="description..." ngModel="{{selectedItem.description}}"></textarea>
 
                   <input type="submit" value="EDIT">

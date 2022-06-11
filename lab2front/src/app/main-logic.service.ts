@@ -34,6 +34,7 @@ export class MainLogicService {
     this.list.next(list);
   }
 
+  
 
   public inputs:string[] = ["", "", ""]
 }

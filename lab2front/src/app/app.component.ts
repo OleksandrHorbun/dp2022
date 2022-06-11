@@ -35,7 +35,6 @@ export class AppComponent {
   addItem(item:Weather){
     this.service.postItem(item).subscribe(
       (item)=>{
-        // console.log(item);
         this.updateItems();
       }
     );

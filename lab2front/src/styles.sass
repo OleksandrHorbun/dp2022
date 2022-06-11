@@ -2,7 +2,7 @@ $c-main: #ffa600
 $b-main: #4e4e4e
 $real-black: #000000
 $transp_black: rgba(0, 0, 0, 0.6)
-$btn_change_city: rgba(78, 78, 78, 0.5)
+$btn: rgba(78, 78, 78, 0.5)
 
 $windowwidth: 1000px
 
@@ -49,6 +49,8 @@ body
 	h2
 		max-width: 2000 px
 		padding: 10px
+	.description
+		padding-bottom: 10px
 
 
 header 
@@ -56,7 +58,6 @@ header
 	max-width: 1000px
 	margin: 0 auto
 	padding-top: 10px
-	padding-bottom: auto
 	border-bottom: 2px solid $c-main
 	h1 
 		display: block
@@ -82,9 +83,9 @@ footer
 .headerfooter-height 
 	height: 3rem
 
-.btn_change_city
+.submit
 	width: 300px
-	background: $btn_change_city
+	background: $btn
 	border-radius: 2px
 	border: 0
 	color: white
