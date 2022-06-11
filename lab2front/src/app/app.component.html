@@ -18,6 +18,7 @@
 
             <h2>Weather in cities:</h2>
             <h2 class = "Pcity">City = {{item.city}}</h2>
+            <b><div class="interact"><img (click)="onSelect(item)" src="/assets/edit.png" alt=""><span (click)="deleteItem(item)" id="del"> X </span></div></b>
             <p class = "Pdate">Date of forecast = {{item.date}}</p>
             <p class = "Ptemp">Temp = {{item.temp}}</p>
             <p class = Ptemp_min>Temp-min = {{item.temp_min}}</p>
@@ -44,7 +45,7 @@
                   <input type="number" class="input" placeholder="Feels-like..." name="feels_like" ngModel="">
                   <textarea type="text" class="input" placeholder="Description..." name="description" ngModel=""></textarea>
                   
-                  <input type="submit" value="ADD">
+                  <input type="submit" class = submit value="ADD">
               </form>
               </div>
       
@@ -61,7 +62,7 @@
                   <input type="number" class="input" placeholder="Feels-like..." name="feels_like" ngModel="{{selectedItem.feels_like}}">
                   <textarea class="input" placeholder="Description" name="description..." ngModel="{{selectedItem.description}}"></textarea>
 
-                  <input type="submit" value="EDIT">
+                  <input type="submit" class = submit value="EDIT">
               </form> 
               </div>
 

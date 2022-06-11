@@ -9,8 +9,7 @@ import { Weather } from './weather';
 export class MainLogicService {
   list = new BehaviorSubject<Weather[]>([])
   // url:string="http://localhost:4200/weather"
-  url:string="http://localhost:8080/lab2/Servlet_first"
-  // USERS:Gamepads[]=[{id:1,name:"Roman", age:49},{id:2,name:"Olena", age:29}]
+  url:string="http://localhost:8080/lab3/Servlet_first"
 
   constructor(private http:HttpClient) { }
 
@@ -34,7 +33,7 @@ export class MainLogicService {
     this.list.next(list);
   }
 
-  
+
 
   public inputs:string[] = ["", "", ""]
 }
