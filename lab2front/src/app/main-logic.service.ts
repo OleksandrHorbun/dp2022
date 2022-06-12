@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Weather } from './weather';
+import { Rest1 } from './rest1';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,13 @@ import { Weather } from './weather';
 export class MainLogicService {
   list = new BehaviorSubject<Weather[]>([])
   // url:string="http://localhost:4200/weather"
-  url:string="http://localhost:8080/lab3/Servlet_first"
+  //url:string="http://localhost:8080/lab3/Servlet_first"
+  url:string="http://localhost:1155/weather"
 
   constructor(private http:HttpClient) { }
 
-  getItems():Observable<Weather[]>{
-    return this.http.get<Weather[]>(this.url);
+  getItems():Observable<Rest1>{
+    return this.http.get<Rest1>(this.url);
   }
 
   postItem(weather:Weather):Observable<Weather[]>{
@@ -22,11 +24,11 @@ export class MainLogicService {
   }
 
   putItem(weather:Weather):Observable<Weather[]>{
-    return this.http.put<Weather[]>(this.url+"/"+weather.id,weather);
+    return this.http.put<Weather[]>(this.url+"/"+weather._links.wweather.href,weather);
   }
 
   deleteItem(weather:Weather):Observable<Weather[]>{
-    return this.http.delete<Weather[]>(this.url+"/"+weather.id);
+    return this.http.delete<Weather[]>(weather._links.wweather.href);
   }
 
   setList(list:Weather[]){

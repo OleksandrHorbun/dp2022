@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Weather } from './weather';
+import { Rest1 } from './rest1';
 
 import { MainLogicService } from './main-logic.service';
 
@@ -14,8 +15,7 @@ export class AppComponent {
   itemsList:Weather[]=[];
   showForms:boolean=false;
   selectedItem?:Weather;
-
-  id:number = 0;
+  id:number = 1;
 
   constructor(private service:MainLogicService) { }
 
@@ -25,9 +25,8 @@ export class AppComponent {
 
   updateItems(){
     this.service.getItems().subscribe(
-      (items)=>{
-        this.itemsList=items;
-        this.service.setList(items);
+      (Rest1)=>{
+        this.itemsList = Rest1._embedded.weathers;
       }
     );
   }
@@ -42,6 +41,8 @@ export class AppComponent {
 
   updateItem(item:Weather){
     
+    item._links =this.selectedItem?._links!;
+
       this.service.putItem(item).subscribe(
       ()=>{
         this.updateItems();      

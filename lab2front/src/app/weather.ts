@@ -8,5 +8,13 @@ export interface Weather {
   temp_max:number; //double
   feels_like:number; //double
   description:string;
-
+  "link" : string;
+  "_links" : {
+    "self" : {
+      "href" : string;
+    },
+    "wweather" : {
+      "href" : string;
+    }
+  }
 }

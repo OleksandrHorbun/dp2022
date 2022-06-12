@@ -1,23 +1,32 @@
-package Weathers;
+package lab5.items;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+	
+@Entity
+@Table(name="weather")
+
 public class Weather implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private int id;
-	private String city;
-	private String date;
-	private double temp;
-	private double temp_min;
-	private double temp_max;
-	private double feels_like;
-	private String description;
-	
+		
+	@Id
+	@GeneratedValue
+	int id;
+	String city;
+	String date;
+	double temp;
+	double temp_min;
+	double temp_max;
+	double feels_like;
+	String description;
+		
+	public Weather() {
+			
+	}
+		
 	public Weather(int id, String city, String date, double temp, double temp_min, double temp_max, double feels_like, String description) {
 		super();
 		this.id = id;
@@ -30,14 +39,10 @@ public class Weather implements Serializable{
 		this.description = description;
 	}
 
-	public Weather() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getId() {
 		return id;
 	}
-	
+		
 	public String getCity() {
 		return city;
 	}
@@ -70,7 +75,7 @@ public class Weather implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+		
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -98,6 +103,7 @@ public class Weather implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	
 	@Override
 	public String toString() {
