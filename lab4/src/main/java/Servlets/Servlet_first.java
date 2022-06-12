@@ -1,11 +1,17 @@
 package Servlets;
 
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jdbc.Connect;
+import jdbc.SQL_CRUD;
+
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import Weathers.Mock;
@@ -17,7 +23,32 @@ import Weathers.Weather;
 @WebServlet("/Servlet_first/*")
 public class Servlet_first extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<Weather> lu = new Mock().getWeatherList();
+	
+	LabCRUDInterface<Weather> crud = new SQL_CRUD();
+
+	
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		
+		crud = new SQL_CRUD();
+		
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+		try {
+			((SQL_CRUD) crud).getConnection().close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,7 +65,7 @@ public class Servlet_first extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		response.setContentType("application/json");
-		response.getWriter().println(lu);
+		response.getWriter().println(crud.read());
 	}
 
 	/**
@@ -43,8 +74,7 @@ public class Servlet_first extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		Weather weather = Helpers.weatherParse(request);
-		weather.setId(Helpers.getNextId(lu));
-		lu.add(weather);
+		crud.create(weather);
 		doGet(request, response);
 	}
 
@@ -57,8 +87,7 @@ public class Servlet_first extends HttpServlet {
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		System.out.println(id);
 		response.setContentType("application/json");
-		int index = Helpers.getIndexByWeatherId(id, lu);
-		lu.set(index, weather);
+		crud.update(id, weather);
 		doGet(request, response);
 	}
 
@@ -70,8 +99,7 @@ public class Servlet_first extends HttpServlet {
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		System.out.println(id);
 		response.setContentType("application/json");
-		int index = Helpers.getIndexByWeatherId(id, lu);
-		lu.remove(index);
+		crud.delete(id);
 		doGet(request, response);
 	}
 
